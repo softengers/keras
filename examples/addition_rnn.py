@@ -32,6 +32,7 @@ from keras.models import Sequential
 from keras import layers
 import numpy as np
 from six.moves import range
+import numpy
 
 
 class CharacterTable(object):
