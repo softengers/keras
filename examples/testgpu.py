@@ -12,6 +12,15 @@ Time taken: 0:03:09.855242
 Shape: (4500, 4500) Device: /cpu:0
 Time taken: 0:00:02.618007
 
+Shape: (7500, 7500) Device: /cpu:0
+Time taken: 0:00:02.618007
+
+Shape: (9500, 9500) Device: /cpu:0
+Time taken: 0:00:10.644696
+
+Shape: (12500, 12500) Device: /cpu:0
+Time taken: 0:00:22.554438
+
 Shape: (15000, 15000) Device: /cpu:0
 Time taken: 0:00:40.408174
 
@@ -22,11 +31,17 @@ Shape: (1500, 1500) Device: /gpu:0
 Time taken: 0:00:04.823442
 
 Shape: (4500, 4500) Device: /gpu:0
+Time taken: 0:00:02.529637
  
+Shape: (7500, 7500) Device: /gpu:0
+Time taken: 0:00:03.234047
+
+Shape: (9500, 9500) Device: /gpu:0
+Time taken: 0:00:04.673639
 
 """
 sysarg1 = 'gpu'
-sysarg2 = 4500
+sysarg2 = 11000
 device_name = sysarg1 # Choose device from cmd line. Options: gpu or cpu
 shape = (sysarg2, sysarg2)
 
