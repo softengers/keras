@@ -44,6 +44,10 @@ from keras.layers import Conv2D, Lambda, MaxPooling2D
 from keras import backend as K
 import os
 
+
+from datetime import datetime
+startTime = datetime.now()
+
 if K.backend() != 'tensorflow':
     raise RuntimeError('This example can only run with the '
                        'TensorFlow backend, '
@@ -179,3 +183,7 @@ print('Saved trained model at %s ' % model_path)
 scores = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -3,6 +3,13 @@
 The test data is embedded using the weights of the final dense layer, just
 before the classification head. This embedding can then be visualized using
 TensorBoard's Embedding Projector.
+
+60000/60000 [==============================] - 6s 106us/step - loss: 0.2759 - acc: 0.9156 - val_loss: 0.0568 - val_acc: 0.9810
+Epoch 2/2
+60000/60000 [==============================] - 4s 66us/step - loss: 0.0941 - acc: 0.9723 - val_loss: 0.0396 - val_acc: 0.9867
+Test loss: 0.03961459307800978
+Test accuracy: 0.9867
+Time taken: 0:00:29.829756
 '''
 
 from __future__ import print_function
@@ -20,9 +27,12 @@ from keras import backend as K
 
 import numpy as np
 
+from datetime import datetime
+startTime = datetime.now()
+
 batch_size = 128
 num_classes = 10
-epochs = 12
+epochs = 2 #12->2
 log_dir = './logs'
 
 if not exists(log_dir):
@@ -94,3 +104,7 @@ print('Test accuracy:', score[1])
 # You can now launch tensorboard with `tensorboard --logdir=./logs` on your
 # command line and then go to http://localhost:6006/#projector to view the
 # embeddings
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

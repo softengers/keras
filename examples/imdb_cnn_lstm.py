@@ -13,6 +13,9 @@ from keras.layers import LSTM
 from keras.layers import Conv1D, MaxPooling1D
 from keras.datasets import imdb
 
+from datetime import datetime
+startTime = datetime.now()
+
 # Embedding
 max_features = 20000
 maxlen = 100
@@ -74,3 +77,7 @@ model.fit(x_train, y_train,
 score, acc = model.evaluate(x_test, y_test, batch_size=batch_size)
 print('Test score:', score)
 print('Test accuracy:', acc)
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

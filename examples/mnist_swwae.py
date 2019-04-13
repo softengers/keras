@@ -195,3 +195,6 @@ plt.axis('off')
 plt.title('Test Samples: Originals/Reconstructions')
 plt.imshow(x_plot, interpolation='none', cmap='gray')
 plt.savefig('reconstructions.png')
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

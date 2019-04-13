@@ -345,3 +345,6 @@ if __name__ == '__main__':
 
     with open('acgan-history.pkl', 'wb') as f:
         pickle.dump({'train': train_history, 'test': test_history}, f)
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

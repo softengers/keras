@@ -236,3 +236,6 @@ loss, acc = test_model.evaluate(x_test,
                                 keras.utils.to_categorical(y_test),
                                 batch_size=batch_size)
 print('\nTest accuracy: {0}'.format(acc))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -24,6 +24,8 @@ from keras.layers import Conv1D, MaxPooling1D, Embedding
 from keras.models import Model
 from keras.initializers import Constant
 
+from datetime import datetime
+startTime = datetime.now()
 
 BASE_DIR = ''
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
@@ -143,3 +145,6 @@ model.fit(x_train, y_train,
           batch_size=128,
           epochs=10,
           validation_data=(x_val, y_val))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -122,3 +122,6 @@ for l in feature_layers:
 train_model(model,
             (x_train_gte5, y_train_gte5),
             (x_test_gte5, y_test_gte5), num_classes)
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

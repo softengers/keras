@@ -9,6 +9,28 @@ on the Reuters newswire topic classification task.
 - Klambauer, G., Unterthiner, T., Mayr, A., & Hochreiter, S. (2017).
   Self-Normalizing Neural Networks. arXiv preprint arXiv:1706.02515.
   https://arxiv.org/abs/1706.02515
+
+  7984/8083 [============================>.] - ETA: 0s - loss: 1.6706 - acc: 0.5779
+8083/8083 [==============================] - 3s 352us/step - loss: 1.6659 - acc: 0.5792 - val_loss: 1.7740 - val_acc: 0.5951
+Epoch 14/40
+
+8083/8083 [==============================] - 3s 312us/step - loss: 1.3072 - acc: 0.6781 - val_loss: 1.5554 - val_acc: 0.6897
+  16/2246 [..............................] - ETA: 0s
+ 608/2246 [=======>......................] - ETA: 0s
+1168/2246 [==============>...............] - ETA: 0s
+1744/2246 [======================>.......] - ETA: 0s
+2246/2246 [==============================] - 0s 89us/step
+Network 1 results
+Hyperparameters: {'n_dense': 6, 'dense_units': 16, 'activation': 'relu', 'dropout': <class 'keras.layers.core.Dropout'>, 'dropout_rate': 0.5, 'kernel_initializer': 'glorot_uniform', 'optimizer': 'sgd'}
+Test score: 1.943575757163397
+Test accuracy: 0.5160284951289424
+Network 2 results
+Hyperparameters: {'n_dense': 6, 'dense_units': 16, 'activation': 'selu', 'dropout': <class 'keras.layers.noise.AlphaDropout'>, 'dropout_rate': 0.1, 'kernel_initializer': 'lecun_normal', 'optimizer': 'sgd'}
+Test score: 1.521681727305758
+Test accuracy: 0.680320569902048
+Time taken: 0:03:20.028187
+
+
 '''
 from __future__ import print_function
 
@@ -21,9 +43,12 @@ from keras.layers import Dense, Activation, Dropout
 from keras.layers.noise import AlphaDropout
 from keras.preprocessing.text import Tokenizer
 
+from datetime import datetime
+startTime = datetime.now()
+
 max_words = 1000
 batch_size = 16
-epochs = 40
+epochs = 40 #40->5
 plot = True
 
 
@@ -173,3 +198,6 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.savefig('comparison_of_networks.png')
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

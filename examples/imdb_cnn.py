@@ -14,6 +14,17 @@ from keras.layers import Embedding
 from keras.layers import Conv1D, GlobalMaxPooling1D
 from keras.datasets import imdb
 
+from datetime import datetime
+startTime = datetime.now()
+
+# http://www.itdaan.com/keywords/Tensorflow+%E6%8A%A5%E9%94%99+CUBLAS+STATUS+ALLOC+FAILED.html
+#import tensorflow as tf
+#config = tf.ConfigProto()
+#config.gpu_options.allow_growth = True
+# http://www.itdaan.com/blog/2018/03/27/39f85117d9f44abb157bdc199174177d.html
+#gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.233)
+#sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
 # set parameters:
 max_features = 5000
 maxlen = 400
@@ -71,3 +82,7 @@ model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test))
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

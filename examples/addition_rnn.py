@@ -25,7 +25,27 @@ Four digits reversed:
 
 Five digits reversed:
 + One layer LSTM (128 HN), 550k training examples = 99% train/test accuracy in 30 epochs
+
+totalMemory: 8.00GiB freeMemory: 6.48GiB
+2019-04-13 20:23:33.068893: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library cublas64_100.dll locally
+2019-04-13 20:23:33.410178: E tensorflow/stream_executor/cuda/cuda_blas.cc:510] failed to create cublas handle: CUBLAS_STATUS_ALLOC_FAILED
+
+44800/45000 [============================>.] - ETA: 0s - loss: 2.1842e-04 - acc: 1.0000
+45000/45000 [==============================] - 9s 208us/step - loss: 2.1834e-04 - acc: 1.0000 - val_loss: 7.4818e-04 - val_acc: 0.9998
+Q 381+24  T 405  ☑ 405 
+Q 675+74  T 749  ☑ 749 
+Q 90+96   T 186  ☑ 186 
+Q 74+14   T 88   ☑ 88  
+Q 331+6   T 337  ☑ 337 
+Q 44+78   T 122  ☑ 122 
+Q 260+61  T 321  ☑ 321 
+Q 799+219 T 1018 ☑ 1018
+Q 17+949  T 966  ☑ 966 
+Q 238+432 T 670  ☑ 670 
+Time taken: 0:30:06.543436
+
 '''  # noqa
+
 
 from __future__ import print_function
 from keras.models import Sequential
@@ -33,6 +53,10 @@ from keras import layers
 import numpy as np
 from six.moves import range
 import numpy
+
+import tensorflow as tf
+from datetime import datetime
+startTime = datetime.now()
 
 
 class CharacterTable(object):
@@ -210,3 +234,6 @@ for iteration in range(1, 200):
         else:
             print(colors.fail + '☒' + colors.close, end=' ')
         print(guess)
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -100,3 +100,7 @@ metric_names = best_model.metrics_names
 metric_values = best_model.evaluate(x_test, y_test)
 for metric, value in zip(metric_names, metric_values):
     print(metric, ': ', value)
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

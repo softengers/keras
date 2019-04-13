@@ -399,3 +399,7 @@ teacher_model = make_teacher_model(x_train, y_train,
 # run the experiments
 net2wider_experiment()
 net2deeper_experiment()
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

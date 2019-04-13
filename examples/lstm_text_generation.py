@@ -23,6 +23,9 @@ import random
 import sys
 import io
 
+from datetime import datetime
+startTime = datetime.now()
+
 path = get_file(
     'nietzsche.txt',
     origin='https://s3.amazonaws.com/text-datasets/nietzsche.txt')
@@ -110,3 +113,6 @@ model.fit(x, y,
           batch_size=128,
           epochs=60,
           callbacks=[print_callback])
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

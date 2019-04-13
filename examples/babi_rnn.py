@@ -29,7 +29,8 @@ QA17 - Positional Reasoning  | 51               | 49.1
 QA18 - Size Reasoning        | 52               | 90.8
 QA19 - Path Finding          | 8                | 9.0
 QA20 - Agent's Motivations   | 91               | 90.7
-
+800/800 [==============================] - 4s 5ms/step - loss: 8.5061e-04 - val_loss: 9.6781e-04
+Epoch 10/10
 For the resources related to the bAbI project, refer to:
 https://research.facebook.com/researchers/1543934539189348
 
@@ -56,6 +57,13 @@ these RNNs can achieve 100% accuracy on many tasks. Memory networks and neural
 networks that use attentional processes can efficiently search through this
 noise to find the relevant statements, improving performance substantially.
 This becomes especially obvious on QA2 and QA3, both far longer than QA1.
+
+950/950 [==============================] - 33s 34ms/step - loss: 1.7731 - acc: 0.2221 - val_loss: 1.8737 - val_acc: 0.0600
+Epoch 20/20
+1000/1000 [==============================] - 15s 15ms/step
+Test loss / test accuracy = 1.7849 / 0.1880
+Time taken: 0:11:20.823385
+
 '''
 
 from __future__ import print_function
@@ -72,6 +80,8 @@ from keras.layers import recurrent
 from keras.models import Model
 from keras.preprocessing.sequence import pad_sequences
 
+from datetime import datetime
+startTime = datetime.now()
 
 def tokenize(sent):
     '''Return the tokens of a sentence including punctuation.
@@ -226,3 +236,7 @@ print('Evaluation')
 loss, acc = model.evaluate([tx, txq], ty,
                            batch_size=BATCH_SIZE)
 print('Test loss / test accuracy = {:.4f} / {:.4f}'.format(loss, acc))
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

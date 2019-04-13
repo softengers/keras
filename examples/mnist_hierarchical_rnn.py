@@ -96,3 +96,7 @@ model.fit(x_train, y_train,
 scores = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

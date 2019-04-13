@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''
+ File "C:/Users/admin/PycharmProjects/keras/examples/class_activation_maps.py", line 35, in load_img
+    original_img = cv2.imread(fname)[:, :, ::-1]
+TypeError: 'NoneType' object is not subscriptable
+
+'''
 
 import numpy as np
 import cv2
@@ -9,6 +15,9 @@ from keras.models import Model
 import keras.applications.resnet50 as resnet
 from keras.layers import UpSampling2D, Conv2D
 
+
+from datetime import datetime
+startTime = datetime.now()
 
 # Please set an appropriate image file
 INPUT_IMG_FILE = "dog.jpg"
@@ -86,3 +95,7 @@ plt.imshow(original_img, alpha=0.5)
 plt.imshow(cv2.resize(class_activation_map,
                       original_size), cmap='jet', alpha=0.5)
 plt.show()
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

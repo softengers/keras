@@ -57,6 +57,9 @@ from keras.utils.data_utils import get_file
 from keras.preprocessing import image
 import keras.callbacks
 
+from datetime import datetime
+startTime = datetime.now()
+
 
 OUTPUT_DIR = 'image_ocr'
 
@@ -549,3 +552,7 @@ if __name__ == '__main__':
     # increase to wider images and start at epoch 20.
     # The learned weights are reloaded
     train(run_name, 20, 25, 512)
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

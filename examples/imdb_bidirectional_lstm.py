@@ -13,6 +13,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Embedding, LSTM, Bidirectional
 from keras.datasets import imdb
 
+from datetime import datetime
+startTime = datetime.now()
 
 max_features = 20000
 # cut texts after this number of words
@@ -47,3 +49,6 @@ model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=4,
           validation_data=[x_test, y_test])
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

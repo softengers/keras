@@ -31,6 +31,12 @@ ResNet56   v2|  6| 93.01 %|            NA         %|100
 ResNet110  v2| 12| 93.15 %|            93.63      %|180
 ResNet164  v2| 18|     - %|            94.54      %|  -
 ResNet1001 v2|111|     - %|            95.08+-.14 %|  -
+
+1563/1563 [==============================] - 113s 72ms/step - loss: 1.5730 - acc: 0.4830 - val_loss: 1.3852 - val_acc: 0.5655
+Epoch 00001: val_acc improved from -inf to 0.56550, saving model to C:\Users\admin\PycharmProjects\keras\examples\saved_models\cifar10_ResNet20v1_model.001.h5
+Epoch 2/200
+
+113*200=22600/3600=6.27h
 """
 
 from __future__ import print_function
@@ -47,6 +53,10 @@ from keras.models import Model
 from keras.datasets import cifar10
 import numpy as np
 import os
+
+
+from datetime import datetime
+startTime = datetime.now()
 
 # Training parameters
 batch_size = 32  # orig paper trained all networks with batch_size=128
@@ -453,3 +463,8 @@ else:
 scores = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)
+

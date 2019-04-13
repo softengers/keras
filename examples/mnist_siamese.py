@@ -141,3 +141,6 @@ te_acc = compute_accuracy(te_y, y_pred)
 
 print('* Accuracy on training set: %0.2f%%' % (100 * tr_acc))
 print('* Accuracy on test set: %0.2f%%' % (100 * te_acc))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -35,6 +35,12 @@ this capability, and hence is limited by its `lahead` parameter,
 which is not sufficient to see the n-point average.
 
 When `lahead >= tsteps`, both the stateful and stateless LSTM converge.
+
+800/800 [==============================] - 4s 5ms/step - loss: 8.5061e-04 - val_loss: 9.6781e-04
+Epoch 10/10
+
+800/800 [==============================] - 4s 4ms/step - loss: 8.5018e-04 - val_loss: 9.6405e-04
+
 '''
 from __future__ import print_function
 import numpy as np
@@ -42,6 +48,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
+
+from datetime import datetime
+startTime = datetime.now()
 
 # ----------------------------------------------------------
 # EDITABLE PARAMETERS
@@ -241,3 +250,7 @@ plt.subplot(3, 1, 3)
 plt.plot((y_test - predicted_stateless).flatten())
 plt.title('Stateless: Expected - Predicted')
 plt.show()
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

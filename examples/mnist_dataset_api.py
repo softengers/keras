@@ -15,6 +15,9 @@ respectively.
 
 This example is intended to closely follow the
 mnist_tfrecord.py example.
+
+50s by RTX2070 with Tensorflow backend
+#  raise RuntimeError('This example can only run with the TensorFlow backend,'
 '''
 import numpy as np
 import os
@@ -27,6 +30,9 @@ from keras.datasets import mnist
 
 import tensorflow as tf
 
+import tensorflow as tf
+from datetime import datetime
+startTime = datetime.now()
 
 if K.backend() != 'tensorflow':
     raise RuntimeError('This example can only run with the TensorFlow backend,'
@@ -105,3 +111,7 @@ test_model.summary()
 
 loss, acc = test_model.evaluate(x_test, y_test, num_classes)
 print('\nTest accuracy: {0}'.format(acc))
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

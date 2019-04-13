@@ -71,3 +71,7 @@ model.fit(x_train, y_train,
 scores = model.evaluate(x_test, y_test, verbose=0)
 print('IRNN test score:', scores[0])
 print('IRNN test accuracy:', scores[1])
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

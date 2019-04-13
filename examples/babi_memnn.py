@@ -11,7 +11,12 @@ References:
   ["End-To-End Memory Networks"](http://arxiv.org/abs/1503.08895)
 
 Reaches 98.6% accuracy on task 'single_supporting_fact_10k' after 120 epochs.
-Time per epoch: 3s on CPU (core i7).
+Time per epoch: 3s on CPU (core i7). 360s, 6minutes
+
+10000/10000 [==============================] - 5s 456us/step - loss: 0.0795 - acc: 0.9733 - val_loss: 0.1919 - val_acc: 0.9460
+Epoch 120/120
+10000/10000 [==============================] - 5s 455us/step - loss: 0.0754 - acc: 0.9758 - val_loss: 0.2373 - val_acc: 0.9350
+Time taken: 0:09:27.968150
 '''
 from __future__ import print_function
 
@@ -27,6 +32,16 @@ import tarfile
 import numpy as np
 import re
 
+# http://www.itdaan.com/keywords/Tensorflow+%E6%8A%A5%E9%94%99+CUBLAS+STATUS+ALLOC+FAILED.html
+import tensorflow as tf
+#config = tf.ConfigProto()
+#config.gpu_options.allow_growth = True
+# http://www.itdaan.com/blog/2018/03/27/39f85117d9f44abb157bdc199174177d.html
+#gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.233)
+#sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
+from datetime import datetime
+startTime = datetime.now()
 
 def tokenize(sent):
     '''Return the tokens of a sentence including punctuation.
@@ -229,3 +244,6 @@ model.fit([inputs_train, queries_train], answers_train,
           batch_size=32,
           epochs=120,
           validation_data=([inputs_test, queries_test], answers_test))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

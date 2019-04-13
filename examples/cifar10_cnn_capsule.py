@@ -13,6 +13,11 @@ The highest achieved validation accuracy is 83.79% after 50 epochs.
 This is a fast implementation that takes just 20s/epoch on a GTX 1070 GPU.
 
 The paper "Dynamic Routing Between Capsules": https://arxiv.org/abs/1710.09829
+
+ File "C:\Users\admin\PycharmProjects\keras\keras\backend\tensorflow_backend.py", line 1249, in batch_dot
+    'y.shape[%d] (%d != %d).' % (axes[0], axes[1], d1, d2))
+ValueError: Can not do batch_dot on inputs with shapes (None, 10, 10, 16) and (None, 10, None, 16) with axes=[2, 3]. x.shape[2] != y.shape[3] (10 != 16).
+
 """
 from __future__ import print_function
 
@@ -24,6 +29,9 @@ from keras.datasets import cifar10
 from keras.models import Model
 from keras.preprocessing.image import ImageDataGenerator
 
+
+from datetime import datetime
+startTime = datetime.now()
 
 def squash(x, axis=-1):
     """The Squashing Function.
@@ -160,7 +168,7 @@ class Capsule(layers.Layer):
 
 batch_size = 128
 num_classes = 10
-epochs = 100
+epochs = 2 #100->2
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 x_train = x_train.astype('float32')
@@ -245,3 +253,6 @@ else:
         epochs=epochs,
         validation_data=(x_test, y_test),
         workers=4)
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

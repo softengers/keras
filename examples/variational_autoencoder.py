@@ -11,6 +11,10 @@ latent vector from a Gaussian distribution with mean = 0 and std = 1.
 [1] Kingma, Diederik P., and Max Welling.
 "Auto-Encoding Variational Bayes."
 https://arxiv.org/abs/1312.6114
+
+ '`pydot` failed to call GraphViz.'
+OSError: `pydot` failed to call GraphViz.Please install GraphViz (https://www.graphviz.org/) and ensure that its executables are in the $PATH.
+
 '''
 
 from __future__ import absolute_import
@@ -29,6 +33,8 @@ import matplotlib.pyplot as plt
 import argparse
 import os
 
+from datetime import datetime
+startTime = datetime.now()
 
 # reparameterization trick
 # instead of sampling from Q(z|X), sample epsilon = N(0,I)
@@ -205,3 +211,6 @@ if __name__ == '__main__':
                  data,
                  batch_size=batch_size,
                  model_name="vae_mlp")
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

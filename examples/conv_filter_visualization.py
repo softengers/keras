@@ -15,6 +15,8 @@ from keras import layers
 from keras.applications import vgg16
 from keras import backend as K
 
+from datetime import datetime
+startTime = datetime.now()
 
 def normalize(x):
     """utility function to normalize a tensor.
@@ -256,3 +258,7 @@ if __name__ == '__main__':
 
     # example function call
     visualize_layer(vgg, LAYER_NAME)
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

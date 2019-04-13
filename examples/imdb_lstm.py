@@ -13,6 +13,20 @@ Some configurations won't converge.
 - LSTM loss decrease patterns during training can be quite different
 from what you see with CNNs/MLPs/etc.
 
+Train...
+Train on 25000 samples, validate on 25000 samples
+Epoch 1/15
+
+25000/25000 [==============================] - 21s 849us/step
+Test score: 1.0958880810536444
+Test accuracy: 0.8086
+Time taken: 0:36:38.879344 by CPU theano
+
+25000/25000 [==============================] - 39s 2ms/step
+Test score: 1.2524223602449893
+Test accuracy: 0.80824
+Time taken: 0:39:28.920834 by Tensorflow
+
 '''
 from __future__ import print_function
 
@@ -21,6 +35,11 @@ from keras.models import Sequential
 from keras.layers import Dense, Embedding
 from keras.layers import LSTM
 from keras.datasets import imdb
+
+import tensorflow as tf
+from datetime import datetime
+from datetime import datetime
+startTime = datetime.now()
 
 max_features = 20000
 # cut texts after this number of words (among top max_features most common words)
@@ -58,3 +77,6 @@ score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
 print('Test score:', score)
 print('Test accuracy:', acc)
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -55,6 +55,9 @@ from keras.models import Model
 from keras.layers import Input, LSTM, Dense
 import numpy as np
 
+from datetime import datetime
+startTime = datetime.now()
+
 batch_size = 64  # Batch size for training.
 epochs = 100  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
@@ -229,3 +232,7 @@ for seq_index in range(100):
     print('-')
     print('Input sentence:', input_texts[seq_index])
     print('Decoded sentence:', decoded_sentence)
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

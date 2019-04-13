@@ -62,6 +62,9 @@ import argparse
 from keras.applications import vgg19
 from keras import backend as K
 
+from datetime import datetime
+startTime = datetime.now()
+
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
                     help='Path to the image to transform.')
@@ -294,3 +297,6 @@ for i in range(iterations):
     end_time = time.time()
     print('Image saved as', fname)
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

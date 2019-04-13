@@ -25,6 +25,8 @@ from keras.layers import Embedding
 from keras.layers import GlobalAveragePooling1D
 from keras.datasets import imdb
 
+from datetime import datetime
+startTime = datetime.now()
 
 def create_ngram_set(input_list, ngram_value=2):
     """
@@ -142,3 +144,6 @@ model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

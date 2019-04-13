@@ -3,6 +3,16 @@
 
 It gets to 75% validation accuracy in 25 epochs, and 79% after 50 epochs.
 (it's still underfitting at that point, though).
+
+1563/1563 [==============================] - 25s 16ms/step - loss: 1.8694 - acc: 0.3142 - val_loss: 1.6117 - val_acc: 0.4255
+Epoch 2/2
+
+ 9376/10000 [===========================>..] - ETA: 0s
+10000/10000 [==============================] - 1s 73us/step
+Test loss: 1.4307315174102784
+Test accuracy: 0.4859
+Time taken: 0:00:47.206343
+
 '''
 
 from __future__ import print_function
@@ -13,6 +23,10 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 import os
+
+from datetime import datetime
+startTime = datetime.now()
+
 
 batch_size = 32
 num_classes = 10
@@ -130,3 +144,7 @@ print('Saved trained model at %s ' % model_path)
 scores = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

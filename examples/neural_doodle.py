@@ -59,6 +59,9 @@ from keras.models import Model
 from keras.preprocessing.image import load_img, save_img, img_to_array
 from keras.applications import vgg19
 
+from datetime import datetime
+startTime = datetime.now()
+
 # Command line arguments
 parser = argparse.ArgumentParser(description='Keras neural doodle example')
 parser.add_argument('--nlabels', type=int,
@@ -375,3 +378,6 @@ for i in range(50):
     end_time = time.time()
     print('Image saved as', fname)
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

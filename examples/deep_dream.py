@@ -20,6 +20,9 @@ import argparse
 from keras.applications import inception_v3
 from keras import backend as K
 
+from datetime import datetime
+startTime = datetime.now()
+
 parser = argparse.ArgumentParser(description='Deep Dreams with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
                     help='Path to the image to transform.')
@@ -190,3 +193,7 @@ for shape in successive_shapes:
     shrunk_original_img = resize_img(original_img, shape)
 
 save_img(result_prefix + '.png', deprocess_image(np.copy(img)))
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

@@ -11,6 +11,9 @@ from keras.layers.normalization import BatchNormalization
 import numpy as np
 import pylab as plt
 
+from datetime import datetime
+startTime = datetime.now()
+
 # We create a layer which take as input movies of shape
 # (n_frames, width, height, channels) and returns a movie
 # of identical shape.
@@ -36,6 +39,9 @@ seq.add(BatchNormalization())
 seq.add(Conv3D(filters=1, kernel_size=(3, 3, 3),
                activation='sigmoid',
                padding='same', data_format='channels_last'))
+
+seq.summary()
+
 seq.compile(loss='binary_crossentropy', optimizer='adadelta')
 
 
@@ -102,7 +108,7 @@ def generate_movies(n_samples=1200, n_frames=15):
 # Train the network
 noisy_movies, shifted_movies = generate_movies(n_samples=1200)
 seq.fit(noisy_movies[:1000], shifted_movies[:1000], batch_size=10,
-        epochs=300, validation_split=0.05)
+        epochs=3, validation_split=0.05)
 
 # Testing the network on one movie
 # feed it with the first 7 positions and then
@@ -141,3 +147,7 @@ for i in range(15):
 
     plt.imshow(toplot)
     plt.savefig('%i_animate.png' % (i + 1))
+
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)

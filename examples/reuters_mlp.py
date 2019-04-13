@@ -1,5 +1,19 @@
 '''Trains and evaluate a simple MLP
 on the Reuters newswire topic classification task.
+
+tensorflow.python.framework.errors_impl.InternalError: Blas GEMM launch failed : a.shape=(32, 1000), b.shape=(1000, 512), m=32, n=512, k=1000
+	 [[{{node dense_1/MatMul}}]]
+
+8083/8083 [==============================] - 1s 113us/step - loss: 0.4170 - acc: 0.9004 - val_loss: 0.8595 - val_acc: 0.8154
+Epoch 5/5
+	 8083/8083 [==============================] - 1s 103us/step - loss: 0.3298 - acc: 0.9191 - val_loss: 0.8736 - val_acc: 0.8198
+  32/2246 [..............................] - ETA: 0s
+1408/2246 [=================>............] - ETA: 0s
+2246/2246 [==============================] - 0s 36us/step
+Test score: 0.8689914898265183
+Test accuracy: 0.7969723954226221
+Time taken: 0:00:08.677153
+
 '''
 from __future__ import print_function
 
@@ -10,9 +24,12 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.preprocessing.text import Tokenizer
 
+from datetime import datetime
+startTime = datetime.now()
+
 max_words = 1000
 batch_size = 32
-epochs = 5
+epochs = 100
 
 print('Loading data...')
 (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words,
@@ -58,3 +75,6 @@ score = model.evaluate(x_test, y_test,
                        batch_size=batch_size, verbose=1)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
+
+print("Time taken:", datetime.now() - startTime)
+print("\n" * 5)
