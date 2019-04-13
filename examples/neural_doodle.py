@@ -46,6 +46,11 @@ python neural_doodle.py --nlabels 4 --style-image Renoir/style.png \
 
 Example images can be downloaded from
 https://github.com/DmitryUlyanov/fast-neural-doodle/tree/master/data
+
+  File "C:\Software\Anaconda3\lib\site-packages\PIL\Image.py", line 2483, in open
+    fp = io.BytesIO(fp.read())
+AttributeError: 'NoneType' object has no attribute 'read'
+
 '''
 from __future__ import print_function
 import time

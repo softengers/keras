@@ -50,6 +50,15 @@ keeping the generated image close enough to the original one.
 
 # References
     - [A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)
+
+    usage: neural_style_transfer.py [-h] [--iter ITER]
+                                [--content_weight CONTENT_WEIGHT]
+                                [--style_weight STYLE_WEIGHT]
+                                [--tv_weight TV_WEIGHT]
+                                base ref res_prefix
+neural_style_transfer.py: error: the following arguments are required: base, ref, res_prefix
+Process finished with exit code 2
+
 '''
 
 from __future__ import print_function

@@ -35,6 +35,46 @@ model using the numpy based Keras API.
 
 Gets to ~99.1% test accuracy after 5 epochs
 (high variance from run to run: 98.9-99.3).
+
+
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+Model: "model_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         (100, 28, 28, 1)          0
+_________________________________________________________________
+conv2d_1 (Conv2D)            (100, 26, 26, 32)         320
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (100, 13, 13, 32)         0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (100, 11, 11, 64)         18496
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (100, 5, 5, 64)           0
+_________________________________________________________________
+flatten_1 (Flatten)          (100, 1600)               0
+_________________________________________________________________
+dense_1 (Dense)              (100, 512)                819712
+_________________________________________________________________
+dropout_1 (Dropout)          (100, 512)                0
+_________________________________________________________________
+x_train_out (Dense)          (100, 10)                 5130
+=================================================================
+Total params: 843,658
+Trainable params: 843,658
+Non-trainable params: 0
+_________________________________________________________________
+WARNING:tensorflow:From C:/Users/admin/PycharmProjects/keras/examples/mnist_tfrecord.py:184: batch (from tensorflow.python.training.input) is deprecated and will be removed in a future version.
+Instructions for updating:
+Queue-based input pipelines have been replaced by `tf.data`. Use `tf.data.Dataset.batch(batch_size)` (or `padded_batch(...)` if `dynamic_pad=True`).
+WARNING:tensorflow:From C:/Users/admin/PycharmProjects/keras/examples/mnist_tfrecord.py:210: start_queue_runners (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
+WARNING:tensorflow:From C:\Software\Anaconda3\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Epoch 1/5
+
 '''
 import numpy as np
 import os
@@ -45,6 +85,9 @@ from keras import layers
 from keras.callbacks import Callback
 
 from tensorflow.contrib.learn.python.learn.datasets import mnist
+
+from datetime import datetime
+startTime = datetime.now()
 
 if K.backend() != 'tensorflow':
     raise RuntimeError('This example can only run with the '
